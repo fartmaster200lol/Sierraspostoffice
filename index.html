@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Read the letters and guess which animals wrote to Sierra.">
+<title>Sierra’s Office</title>
+<link rel="stylesheet" href="style.css">
+<script src="game.js" defer></script>
+<script src="scenes.js" defer></script>
+</head>
+<body>
+<section id="menu" class="world menu" aria-labelledby="menu-title">
+  <button class="settings-button pixel-button" id="settings">Settings</button>
+  <div class="title-card">
+    <div class="mail-icon" aria-hidden="true">✉</div>
+    <h1 id="menu-title">Sierra’s<br><span>Office</span></h1>
+    <div class="begin-wrap">
+      <button class="pixel-button begin" id="begin">Begin</button>
+      <div class="pig-reaction" aria-hidden="true"><span>Oink!</span><i></i></div>
+    </div>
+  </div>
+</section>
+<dialog id="preferences" aria-labelledby="preferences-title">
+  <form method="dialog">
+    <h2 id="preferences-title">Settings</h2>
+    <label><input id="sound" type="checkbox"> Sound effects</label>
+    <label><input id="music" type="checkbox"> Background music</label>
+    <label><input id="motion" type="checkbox"> Reduce motion</label>
+    <details>
+      <summary>Sound credits</summary>
+      <p><a href="https://commons.wikimedia.org/wiki/File:Mudchute_pig_2.ogg">Mudchute pig 2</a> by Secretlondon, edited for length and volume, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+      <p><a href="https://commons.wikimedia.org/wiki/File:Squeaky_door.ogg">Squeaky door</a> by leonmire via PDSounds, edited for length and volume.</p>
+      <p><a href="https://commons.wikimedia.org/wiki/File:Barking_of_a_dog_2.ogg">Barking of a dog 2</a> by Amada44, edited for length and volume, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+    </details>
+    <button class="pixel-button">Done</button>
+  </form>
+</dialog>
+<section id="street" class="world street" aria-label="City post office exterior" hidden>
+  <button class="pixel-button back" id="back-menu">Main menu</button>
+  <button id="door" aria-label="Enter the post office" class="door">
+    <span class="pixel-button">Enter post office</span>
+  </button>
+</section>
+<section id="night" class="world night" aria-labelledby="night-title" hidden>
+  <div class="night-card">
+    <h2 id="night-title" tabindex="-1">You have a plane for tomorrow</h2>
+    <p>Destination: Isle of Man</p>
+    <button class="pixel-button" id="morning">Next morning</button>
+  </div>
+</section>
+<section id="flight" class="world flight" aria-labelledby="flight-title" hidden>
+  <h2 id="flight-title" tabindex="-1">Isle of Man</h2>
+  <div class="plane" aria-hidden="true"></div>
+  <div class="end-card" id="end-card" hidden>
+    <h2 id="end-title" tabindex="-1">The End</h2>
+    <p>🐶 Woof!</p>
+    <button class="pixel-button" id="replay">Main menu</button>
+  </div>
+</section>
+<div id="curtain" aria-hidden="true"></div>
+<div id="office" hidden>
+<header class="top">
+  <button class="pixel-button" id="back-street">Back outside</button>
+  <div class="count" id="count">0 of 7 letters solved</div>
+</header>
+<main>
+  <div id="mail-desk" class="mail-desk">
+    <button id="stack" class="stack">
+      <span class="envelopes" aria-hidden="true"><span>✉</span></span>
+      <span class="pixel-button" id="stack-label">Open the letters</span>
+    </button>
+  </div>
+  <section class="desk" id="desk" hidden aria-labelledby="desk-title">
+    <div class="desk-head">
+      <div><div class="eyebrow">THE MAIL SORTING DESK</div><h2 id="desk-title">Who wrote this letter?</h2></div>
+      <div class="steps" id="steps" aria-label="Letter progress"></div>
+    </div>
+    <button class="pixel-button" id="put-down">Back to the stack</button>
+    <div class="play">
+      <article class="letter">
+        <header><span id="number">LETTER 1 OF 7</span><span class="stamp" aria-hidden="true">✿</span></header>
+        <h3 id="greeting" tabindex="-1">Dear Mia Purrcy,</h3>
+        <p id="clue"></p>
+        <p class="signature" id="signature">Love,<br>Your mystery sender</p>
+      </article>
+      <div class="guesses">
+        <h3 id="guess-title">Who sent it?</h3>
+        <div class="choices" id="choices"></div>
+        <p id="feedback" aria-live="polite"></p>
+        <button class="primary" id="next" hidden>Next letter</button>
+      </div>
+    </div>
+  </section>
+</main>
+</div>
+</body>
+</html>
